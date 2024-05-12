@@ -1,0 +1,10 @@
+# input and output files
+*.md
+
+# Build directories
+build/
+dist/
+
+# Python environment
+.venv/
+*.spec

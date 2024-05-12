@@ -2,8 +2,9 @@
 *.md
 
 # Build directories
+# -
+# -
 build/
-dist/
 
 # Python environment
 .venv/

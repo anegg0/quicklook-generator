@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Correct binary download URL from the release assets
-BINARY_URL="https://github.com/anegg0/quicklook-generator/releases/download/domolites/quicklook-generator"
+BINARY_URL="https://github.com/anegg0/quicklook-generator/releases/download/v1.0.1/quicklook-generator"
 
 BINARY_NAME="quicklook-generator"
 

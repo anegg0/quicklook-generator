@@ -5,7 +5,7 @@ BINARY_URL="https://github.com/anegg0/quicklook-generator/releases/download/v1.0
 
 BINARY_NAME="quicklook-generator"
 
-INSTALL_DIR="$HOME/.local/bin"
+INSTALL_DIR="$HOME/.local/bin/"
 
 # Ensure the installation directory exists
 mkdir -p "$INSTALL_DIR"

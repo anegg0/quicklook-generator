@@ -20,7 +20,7 @@ Before using Quicklook Generator, ensure you have:
 ### Install 
 
 ``` sh
-bash <(wget -qO- https://github.com/anegg0/quicklook-generator/blob/main/install-script-quicklook-generator.sh)
+bash <(wget -O- https://raw.githubusercontent.com/anegg0/quicklook-generator/main/install-script-quicklook-generator.sh)
 ```
 Or, if you don't want to see what the install script is going to do to your system, feel free to pick a binary in the releases. Add it to your $PATH, and it'll work on your machine, too.
 

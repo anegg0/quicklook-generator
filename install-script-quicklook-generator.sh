@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Correct binary download URL from the release assets
-BINARY_URL="https://github.com/anegg0/quicklook-generator/releases/download/blooby-boolgah/quicklook-generator"
+BINARY_URL="https://github.com/anegg0/quicklook-generator/releases/download/domolites/quicklook-generator"
 
 BINARY_NAME="quicklook-generator"
 
@@ -12,7 +12,7 @@ mkdir -p "$INSTALL_DIR"
 
 # Download the binary using wget
 echo "Downloading $BINARY_NAME..."
-wget -q -O "$INSTALL_DIR/$BINARY_NAME" "$BINARY_URL"
+wget -O "$INSTALL_DIR/$BINARY_NAME" "$BINARY_URL"
 if [ $? -ne 0 ]; then
     echo "Error downloading the binary."
     exit 1

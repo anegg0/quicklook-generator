@@ -4,27 +4,25 @@
 
 ### Project description
 
-Quicklook Generator helps you populate a markdown file with `quicklooks` tags while attending a call or arguing over Slack.
-
+Quicklook Generator is a CLI utility that helps you populate a markdown file with `quicklook` tags, while attending a call or arguing over Slack.
 
 ### Who this project is for
 
-This project is intended EXCLUSIVELY for OCL TW; otherwise, you'd be hard-pressed to find any benefit in this utility.
-Also, if you are a malicious actor, be aware that this utility has been thoroughly edited to give you access to some OSS code.
-
+This project is intended for OCL TWs; otherwise, you'd be hard-pressed to find any value in this thing (and it doesn't have much, anyway).
+Also, if you are a malicious actor, be aware that this utility will give you access to some OSS code on github, so have fun accomplishing nothing!
 
 ### Prerequisites
 
-Before using {Project Name}, ensure you have:
-* MacOS 12+ 
-* Being used to `CLI`
-* Being so darn lazy you can't even copy-paste those poor `quicklooks` without feeling triggered
+Before using Quicklook Generator, ensure you have:
+* MacOS 12+
+* Some familiarity with `CLI`
 
 ### Install 
 
 ``` sh
 bash <(wget -qO- https://github.com/anegg0/quicklook-generator/blob/main/install-script-quicklook-generator.sh)
 ```
+Or, if you don't want to see what the install script is going to do to your system, feel free to pick a binary in the releases. Add it to your $PATH, and it'll work on your machine, too.
 
 ### Usage 
 
@@ -33,9 +31,8 @@ bash <(wget -qO- https://github.com/anegg0/quicklook-generator/blob/main/install
 ``` sh
 quicklook-generator <your-input-file>.md  <your-output-file>.md
 ```
-
-The generator will output a gorgeous `<your-output-file>.md` with some `quicklooks` tags elegantly spread in it (if it could find a match between your text and the [glossary](https://raw.githubusercontent.com/OffchainLabs/arbitrum-docs/master/website/static/glossary.json)). 
-To avoid noise generation, the script will only add one `quicklook` per match.
+- The generator will output a fascinating `<your-output-file>.md` with some `quicklook` tags elegantly spread on it (**if** it could find a match between your text and the [glossary](https://raw.githubusercontent.com/OffchainLabs/arbitrum-docs/master/website/static/glossary.json)). 
+- To avoid noise generation, the script will only add one `quicklook` per match.
 
 2. Diff the output file with your favorite editor to remove the `quicklooks` you consider unnecessary.
 

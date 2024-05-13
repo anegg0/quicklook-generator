@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Define the URL where the binary is hosted
+# Correct binary download URL from the release assets
 BINARY_URL="https://github.com/anegg0/quicklook-generator/releases/download/blooby-boolgah/quicklook-generator"
+
 BINARY_NAME="quicklook-generator"
 
-# Define the installation directory
 INSTALL_DIR="$HOME/.local/bin"
 
-# Create the installation directory if it does not exist
+# Ensure the installation directory exists
 mkdir -p "$INSTALL_DIR"
 
 # Download the binary using wget
@@ -19,13 +19,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Make the binary executable
-# Use sudo if changing permissions outside the user's home directory
-if [[ "$INSTALL_DIR" == "$HOME/.local/bin" ]]; then
-    chmod +x "$INSTALL_DIR/$BINARY_NAME"
-else
-    echo "Changing file permissions; your sudo password may be required."
-    sudo chmod +x "$INSTALL_DIR/$BINARY_NAME"
-fi
+chmod +x "$INSTALL_DIR/$BINARY_NAME"
 
 # Determine the shell configuration file based on the user's current shell
 if [[ "$SHELL" == *"/zsh"* ]]; then

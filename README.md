@@ -40,5 +40,5 @@ quicklook-generator <your-input-file>.md  <your-output-file>.md
 You know what to do if you ever want to do something with this.
 
 ### Terms of use
-Quicklook Generator is licensed under MIT.
+Quicklook Generator is licensed under GPL-3.0.
 

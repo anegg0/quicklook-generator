@@ -19,15 +19,42 @@ def load_json_from_url():
     return response.json()  # Returns the JSON content
 
 def replace_with_quicklook(md_content, pairs):
-    for search_term, replace_term in pairs:
-        search_pattern = re.escape(search_term)
+    # Split the content into lines to process each individually
+    lines = md_content.splitlines()
+    inside_skippable_section = False
+    replaced_terms = set()  # Set to keep track of terms that have already been replaced
 
-        # Perform a single substitution with re.subn()
-        md_content, num_replacements = re.subn(rf'\b{search_pattern}\b',
-                                               replace_term,
-                                               md_content,
-                                               count=1)  # Limit to one replacement
-    return md_content
+    for i, line in enumerate(lines):
+        # Check if the line marks the start or end of a skippable section
+        if line.strip() == "---":
+            inside_skippable_section = not inside_skippable_section
+            continue
+
+        # Skip processing lines within skippable sections or if it's a title or contains bold text
+        if inside_skippable_section or line.startswith("#") or "**" in line:
+            continue
+
+        for search_term, replace_term in pairs:
+            # Skip this term if it has already been replaced once
+            if search_term in replaced_terms:
+                continue
+
+            search_pattern = re.escape(search_term)
+
+            # Perform a single substitution with re.subn()
+            line, num_replacements = re.subn(rf'\b{search_pattern}\b',
+                                             replace_term,
+                                             line,
+                                             count=1)  # Limit to one replacement
+
+            # If a replacement was made, add the term to the replaced_terms set
+            if num_replacements > 0:
+                replaced_terms.add(search_term)
+
+        lines[i] = line
+
+    # Join the lines back into the full content
+    return "\n".join(lines)
 
 def main(args):
     md_file = args.input_md

@@ -19,41 +19,43 @@ def load_json_from_url():
     return response.json()  # Returns the JSON content
 
 def replace_with_quicklook(md_content, pairs):
-    # Split the content into lines to process each individually
     lines = md_content.splitlines()
+    inside_code_block = False
     inside_skippable_section = False
-    replaced_terms = set()  # Set to keep track of terms that have already been replaced
+    replaced_terms = set()
 
     for i, line in enumerate(lines):
-        # Check if the line marks the start or end of a skippable section
+        # Toggle the code block flag
+        if line.strip().startswith("```"):
+            inside_code_block = not inside_code_block
+
+        if inside_code_block or line.startswith("#") or "**" in line:
+            continue
+
+        # Toggle the skippable section flag
         if line.strip() == "---":
             inside_skippable_section = not inside_skippable_section
             continue
 
-        # Skip processing lines within skippable sections or if it's a title or contains bold text
-        if inside_skippable_section or line.startswith("#") or "**" in line:
+        if inside_skippable_section:
             continue
 
         for search_term, replace_term in pairs:
-            # Skip this term if it has already been replaced once
             if search_term in replaced_terms:
                 continue
 
             search_pattern = re.escape(search_term)
-
-            # Perform a single substitution with re.subn()
             line, num_replacements = re.subn(rf'\b{search_pattern}\b',
                                              replace_term,
                                              line,
-                                             count=1)  # Limit to one replacement
+                                             count=1)
 
-            # If a replacement was made, add the term to the replaced_terms set
             if num_replacements > 0:
                 replaced_terms.add(search_term)
+                break  # Exit the loop after first replacement to prevent multiple replacements in the same line
 
         lines[i] = line
 
-    # Join the lines back into the full content
     return "\n".join(lines)
 
 def main(args):

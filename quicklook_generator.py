@@ -22,14 +22,19 @@ def replace_with_quicklook(md_content, pairs):
     lines = md_content.splitlines()
     inside_code_block = False
     inside_skippable_section = False
-    replaced_terms = set()
+    replaced_terms = set()  # Track which terms have been replaced
+
+    # Regex patterns for links
+    md_link_pattern = r'\[([^\]]+)\]\([^)]+\)'  # [text](url)
+    html_link_pattern = r'<a[^>]*>.*?</a>'      # <a>text</a>
 
     for i, line in enumerate(lines):
         # Toggle the code block flag
         if line.strip().startswith("```"):
             inside_code_block = not inside_code_block
 
-        if inside_code_block or line.startswith("#") or "**" in line:
+        # Skip code blocks and headers
+        if inside_code_block or line.startswith("#"):
             continue
 
         # Toggle the skippable section flag
@@ -40,19 +45,40 @@ def replace_with_quicklook(md_content, pairs):
         if inside_skippable_section:
             continue
 
+        # Find all links in the line
+        all_links = []
+        for match in re.finditer(md_link_pattern, line):
+            all_links.append((match.start(), match.end()))
+        for match in re.finditer(html_link_pattern, line):
+            all_links.append((match.start(), match.end()))
+
+        # Process each term
         for search_term, replace_term in pairs:
+            # Skip if term has already been replaced somewhere in the document
             if search_term in replaced_terms:
                 continue
-
+                
+            # Case insensitive search pattern with word boundaries
             search_pattern = re.escape(search_term)
-            line, num_replacements = re.subn(rf'\b{search_pattern}\b',
-                                             replace_term,
-                                             line,
-                                             count=1)
-
-            if num_replacements > 0:
-                replaced_terms.add(search_term)
-                break  # Exit the loop after first replacement to prevent multiple replacements in the same line
+            
+            # Find all potential term matches
+            for match in re.finditer(rf'\b{search_pattern}\b', line, flags=re.IGNORECASE):
+                term_start, term_end = match.span()
+                
+                # Check if the term is part of or adjacent to any link
+                is_near_link = False
+                for link_start, link_end in all_links:
+                    # Check if term overlaps with or is adjacent to a link
+                    if (term_start >= link_start - 1 and term_start <= link_end + 1) or \
+                       (term_end >= link_start - 1 and term_end <= link_end + 1):
+                        is_near_link = True
+                        break
+                
+                # If term is not near any link, replace it
+                if not is_near_link:
+                    line = line[:term_start] + replace_term + line[term_end:]
+                    replaced_terms.add(search_term)
+                    break  # Only replace first occurrence of term
 
         lines[i] = line
 

@@ -9,7 +9,6 @@ Quicklook Generator is a CLI utility that helps you populate a markdown file wit
 ### Who this project is for
 
 This project is intended for OCL TWs; otherwise, you'd be hard-pressed to find any value in this thing (and it doesn't have much, anyway).
-Also, if you are a malicious actor, be aware that this utility will give you access to some OSS code on GitHub, so have fun accomplishing nothing!
 
 ### Prerequisites
 
@@ -18,11 +17,13 @@ Before using Quicklook Generator, ensure you have the following:
 * Some familiarity with `CLI`
 
 ### Install 
-
+#### Using the install script
 ``` sh
 bash <(wget -O- https://raw.githubusercontent.com/anegg0/quicklook-generator/main/install-script-quicklook-generator.sh)
 ```
-Or, if you don't want to see what the install script does to your system, feel free to pick a binary from the releases. Add it to your $PATH, and it'll work on your machine, too.
+#### Manual installation
+
+Pick a binary from the releases. Add it to your $PATH, and it'll work on your machine, too.
 
 ### Usage 
 

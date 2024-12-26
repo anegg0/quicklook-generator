@@ -1,9 +1,9 @@
- #!/bin/bash
+#!/bin/bash
 
 # Correct binary download URL from the release assets
-BINARY_URL="https://github.com/anegg0/quicklook-generator/raw/main/dist/quicklook-generator"
+BINARY_URL="https://github.com/anegg0/quicklook-generator/raw/main/dist/quicklook_generator"
 
-BINARY_NAME="quicklook-generator"
+BINARY_NAME="quicklook_generator"
 
 INSTALL_DIR="$HOME/.local/bin/"
 
@@ -34,7 +34,7 @@ fi
 # Check if the install directory is in PATH
 if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
     # Provide instructions to add to PATH if not already present
-    echo "export PATH=\"\$PATH:$INSTALL_DIR\"" >> "$SHELL_CONFIG_FILE"
+    echo "export PATH=\"\$PATH:$INSTALL_DIR\"" >>"$SHELL_CONFIG_FILE"
     echo "Adding the installation directory to PATH in $SHELL_CONFIG_FILE"
 fi
 

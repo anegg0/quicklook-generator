@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Correct binary download URL from the release assets
-# BINARY_URL="https://github.com/anegg0/quicklook-generator/raw/main/dist/quicklook_generator"
 BINARY_URL="https://github.com/anegg0/quicklook-generator/blob/main/dist/quicklook_generator"
 BINARY_NAME="quicklook_generator"
 

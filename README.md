@@ -4,7 +4,7 @@
 
 ### Project description
 
-Quicklook Generator is a CLI utility that helps you populate a markdown file with `quicklook` tags while attending a call or arguing over Slack.
+Quicklook Generator is a CLI utility that helps you populate a markdown file with `quicklook` tags while arguing over Slack.
 
 ### Who this project is for
 
@@ -30,7 +30,7 @@ Pick a binary from the releases. Add it to your $PATH, and it'll work on your ma
 1. Run:
 
 ``` sh
-quicklook-generator <your-input-file>.md  <your-output-file>.md
+quicklook_generator <your-input-file>.md  <your-output-file>.md
 ```
 - The generator will output a fascinating `<your-output-file>.md` with some `quicklook` tags elegantly spread on it (**if** it could find a match between your text and the [glossary](https://raw.githubusercontent.com/OffchainLabs/arbitrum-docs/master/website/static/glossary.json)). 
 - The script will only add one `quicklook` per match to avoid noise generation.

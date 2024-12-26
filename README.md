@@ -8,7 +8,7 @@ Quicklook Generator is a CLI utility that helps you populate a markdown file wit
 
 ### Who this project is for
 
-This project is intended for OCL TWs; otherwise, you'd be hard-pressed to find any value in this thing (and it doesn't have much, anyway).
+This project is intended for OCL TWs; otherwise, you'd be hard-pressed to find any value in this thing.
 
 ### Prerequisites
 

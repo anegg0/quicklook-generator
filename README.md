@@ -1,45 +1,75 @@
-# README
+# Quicklook Generator
 
-## Quicklook Generator
+A tool to automatically add quicklook tags to your Markdown documentation.
 
-### Project description
-
-Quicklook Generator is a CLI utility that helps you populate a markdown file with `quicklook` tags while arguing over Slack.
-
-### Who this project is for
-
-This project is intended for OCL TWs; otherwise, you'd be hard-pressed to find any value in this thing.
+## Installation
 
 ### Prerequisites
+- macOS
+- `wget` (can be installed via `brew install wget`)
 
-Before using Quicklook Generator, ensure you have the following:
-* MacOS 12+
-* Some familiarity with `CLI`
-
-### Install 
-#### Using the install script
-``` sh
-bash <(wget -O- https://raw.githubusercontent.com/anegg0/quicklook-generator/main/install-script-quicklook-generator.sh)
+### Quick Install
+```bash
+# Download and run the installation script
+curl -sSL https://raw.githubusercontent.com/anegg0/quicklook-generator/main/install-script-quicklook-generator.sh | bash
 ```
-#### Manual installation
 
-Pick a binary from the releases. Add it to your $PATH, and it'll work on your machine, too.
+### Manual Installation
+1. Download the latest release from the [releases page](https://github.com/anegg0/quicklook-generator/releases)
+2. Make it executable: `chmod +x quicklook_generator`
+3. Move it to a directory in your PATH: `mv quicklook_generator ~/.local/bin/`
 
-### Usage 
+## Usage
 
-1. Run:
-
-``` sh
-quicklook_generator <your-input-file>.md  <your-output-file>.md
+```bash
+quicklook_generator input.md output.md
 ```
-- The generator will output a fascinating `<your-output-file>.md` with some `quicklook` tags elegantly spread on it (**if** it could find a match between your text and the [glossary](https://raw.githubusercontent.com/OffchainLabs/arbitrum-docs/master/website/static/glossary.json)). 
-- The script will only add one `quicklook` per match to avoid noise generation.
 
-2. Diff the output file with your favorite editor to remove the `quicklooks` you consider unnecessary.
+This will:
+1. Read your input Markdown file
+2. Fetch the latest glossary terms
+3. Add quicklook tags to matching terms
+4. Save the result to your output file
 
-### Devs
-You know what to do if you ever want to do something with this.
+## Example
 
-### Terms of use
-Quicklook Generator is licensed under GPL-3.0.
+Input (`input.md`):
+```markdown
+This document discusses Arbitrum One and its features.
+```
+
+Output (`output.md`):
+```markdown
+This document discusses <a data-quicklook-from="arbitrum-one">Arbitrum One</a> and its features.
+```
+
+## Building from Source
+
+If you prefer to build from source:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/anegg0/quicklook-generator.git
+   cd quicklook-generator
+   ```
+
+2. Create a virtual environment:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the script:
+   ```bash
+   python quicklook_generator.py input.md output.md
+   ```
+
+## License
+
+[MIT License](LICENSE)
 

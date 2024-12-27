@@ -5,20 +5,15 @@ A tool to automatically add quicklook tags to your Markdown documentation.
 ## Installation
 
 ### Prerequisites
-- macOS
+- macOS 14+
 - `wget` (can be installed via `brew install wget`)
 
 ### Quick Install
+You can run this script:
 ```bash
 # Download and run the installation script
 curl -sSL https://raw.githubusercontent.com/anegg0/quicklook-generator/main/install-script-quicklook-generator.sh | bash
 ```
-
-### Manual Installation
-1. Download the latest release from the [releases page](https://github.com/anegg0/quicklook-generator/releases)
-2. Make it executable: `chmod +x quicklook_generator`
-3. Move it to a directory in your PATH: `mv quicklook_generator ~/.local/bin/`
-
 ## Usage
 
 ```bash

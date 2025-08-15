@@ -4,7 +4,7 @@ import json
 import requests  # Import the requests library
 
 # Hardcode the URL for the JSON glossary
-GLOSSARY_URL = 'https://raw.githubusercontent.com/OffchainLabs/arbitrum-docs/master/website/static/glossary.json'
+GLOSSARY_URL = 'https://raw.githubusercontent.com/OffchainLabs/arbitrum-docs/master/static/glossary.json'
 
 def parse_md_file(md_file):
     with open(md_file, 'r') as f:
